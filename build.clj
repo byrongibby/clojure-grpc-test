@@ -1,7 +1,7 @@
 (ns build
   (:require [clojure.tools.build.api :as b]))
 
-(def lib 'com.github.coderaanalytics/proto-test)
+(def lib 'com.github.coderaanalytics/clojure-grpc-test)
 (def version (format "0.0.%s" (b/git-count-revs nil)))
 (def class-dir "target/classes")
 (def jar-file (format "target/%s-%s.jar" (name lib) version))
@@ -43,4 +43,4 @@
   (b/uber {:class-dir class-dir
            :uber-file uber-file
            :basis @basis
-           :main 'proto.core}))
+           :main 'hello-world.core}))

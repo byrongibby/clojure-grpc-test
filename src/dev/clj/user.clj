@@ -1,9 +1,8 @@
-(ns hello-world.core
+(ns user
   (:require [integrant.core :as ig]
-            [hello-world.client :refer [say-hello]]
+            [integrant.repl :as ig-repl]
             [hello-world.server :refer [make-service]])
-  (:import [io.grpc ServerBuilder])
-  (:gen-class))
+  (:import [io.grpc ServerBuilder]))
 
 (def system-config
   {:system/builder {:port 35000}
@@ -22,7 +21,8 @@
 (defmethod ig/halt-key! :system/server [_ server]
   (.shutdown server))
 
-(defn -main [& args]
-  (let [system (ig/init system-config)] 
-    (say-hello (first args))
-    (ig/halt! system)))
+(ig-repl/set-prep! (constantly system-config))
+
+(def go ig-repl/go)
+(def halt ig-repl/halt)
+(def reset ig-repl/reset)
