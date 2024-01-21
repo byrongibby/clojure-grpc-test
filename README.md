@@ -15,4 +15,4 @@ Or
 
 1. Run `gradle build` to generate the java classes from the proto file.
 2. Run `clj -T:build uber` to generate the uberjar.
-3. Run `java -cp target/clojure-grpc-test-0.0.1.jar clojure.main -m hello-world.core yourname`
+3. Run `java -cp target/clojure-grpc-test-0.0.3.jar clojure.main -m hello-world.core yourname`
